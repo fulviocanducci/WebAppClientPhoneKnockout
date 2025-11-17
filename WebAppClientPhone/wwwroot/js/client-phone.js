@@ -19,27 +19,9 @@ function viewModel() {
    }
 
    self.phones = ko.observableArray([]);
-   //self.phones.subscribe(function (changes) {
-   //   changes.forEach(function (change) {
-   //      if (change.status === 'added') {
-   //         const index = self.phones.indexOf(change.value);
-   //         const id = "#Phones" + index + "Number";
-   //         console.log(id);
-   //         console.log($(id).length);
-   //         if ($(id).length > 0) {
-   //            $(id).focus();
-   //         }
-   //      }
-   //      if (change.status === 'deleted') {
-   //         //console.log("Telefone removido:", change.value);
-   //      }
-   //   });
-   //}, null, "arrayChange");
    self.onPhoneRendered = function (elements, item) {
       const index = self.phones.indexOf(item);
       const id = "#Phones" + index + "Number";
-      console.log(id);
-      console.log($(id).length);
       if ($(id).length > 0) {
          window.setTimeout(function () {
             $(id).focus();
