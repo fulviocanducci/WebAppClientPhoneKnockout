@@ -1,0 +1,71 @@
+﻿@model WebAppClientPhone.Models.Client
+@{
+   string btnAction = (Model != null && Model.Id > 0) ? "Alterar" : "Cadastrar";
+   string pageAction = (Model != null && Model.Id > 0) ? "Edit" : "Create";
+   string pageName = $"Cliente - {(Model != null && Model.Id > 0 ? " Alterar" : " Cadastrar")}";
+   ViewData["Title"] = pageName;
+}
+<h4>@pageName</h4>
+<hr />
+<form asp-action="@pageAction" name="form1" id="form1">
+   @if (Model != null && Model.Id > 0)
+   {
+      <input type="hidden" asp-for="Id" />
+   }
+   <div class="row">
+      <div class="col-md-4 mb-1">
+         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+         <div class="form-group mb-1">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" class="form-control form-control-sm" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+         </div>
+         <div class="form-group mt-1">
+            <button type="submit" class="btn btn-primary btn-sm mb-1">
+               <i class="bi bi-floppy"></i> @btnAction
+            </button>
+            <button class="btn btn-sm btn-primary mb-1" data-bind="click: addPhone">
+               <i class="bi bi-phone"></i> Adicionar telefone
+            </button>
+         </div>
+      </div>
+      <div class="col-md-4 mb-1">
+         <div class="row">
+            <div data-bind="visible: true" style="display: none" class="col-md-12">
+               <label class="control-label" data-bind="text: labels.header">Telefones</label>
+               <div class="form-group" data-bind="foreach: {data: phones(), afterRender: onPhoneRendered}">
+                  <div class="mb-1">
+                     <div class="input-group input-group-sm">
+                        <input class="form-control form-control-sm"
+                               data-bind="value: number, attr: { name: 'Phones[' + $index() + '].Number', id: 'Phones' + $index() + 'Number' }"
+                               data-val="true"
+                               data-val-required="Digite o número"
+                               data-val-regex="Número inválido"
+                               data-val-regex-pattern="^\(\d{2}\)\d{5}-\d{4}$" />
+                        <button class="btn btn-sm btn-danger" data-bind="click: $parent.removePhone">
+                           <i class="bi bi-trash"></i>
+                        </button>
+                        <input type="hidden" data-bind="value: id, attr: { name: 'Phones[' + $index() + '].Id'} " />
+                        <input type="hidden" data-bind="value: clientId, attr: { name: 'Phones[' + $index() + '].ClientId'} " />
+                     </div>
+                     <span class="text-danger field-validation-valid"
+                           data-bind="attr: { 'data-valmsg-for': 'Phones[' + $index() + '].Number'}"
+                           data-valmsg-replace="true"></span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</form>
+<div class="mt-2">
+   <a asp-action="Index">Voltar</a>
+</div>
+
+@section Scripts {
+   @{
+      await Html.RenderPartialAsync("_ValidationScriptsPartial");
+   }
+   <script src="~/knockout/knockout-latest.min.js"></script>
+   <script src="~/js/client-phone.js"></script>
+}

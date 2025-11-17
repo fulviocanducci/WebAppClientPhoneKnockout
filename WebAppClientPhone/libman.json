@@ -1,0 +1,22 @@
+{
+  "version": "3.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "knockout@3.5.1",
+      "destination": "wwwroot/knockout/"
+    },
+    {
+      "library": "knockout-validation@2.0.4",
+      "destination": "wwwroot/knockout-validation/"
+    },
+    {
+      "library": "jquery.maskedinput@1.4.1",
+      "destination": "wwwroot/jquery.maskedinput/"
+    },
+    {
+      "library": "bootstrap-icons@1.13.1",
+      "destination": "wwwroot/bootstrap-icons/"
+    }
+  ]
+}
