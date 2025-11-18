@@ -1,35 +1,39 @@
-﻿@model IEnumerable<WebAppClientPhone.Models.Client>
-
+﻿@model IEnumerable<WebAppClientPhone.Models.ClientDto>
 @{
-    ViewData["Title"] = "Index";
+   ViewData["Title"] = "Clientes";
+   ViewData["Title"] = "Clientes";
 }
-
-<h1>Index</h1>
-
+<h1>Clientes</h1>
 <p>
-    <a asp-action="Create">Create New</a>
+   <a asp-action="Create">Novo</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
+<table class="table table-sm">
+   <thead>
+      <tr>
+         <th class="text-center">
+            Nome Completo
+         </th>
+         <th class="text-center">
+            Telefones
+         </th>
+         <th class="text-center">...</th>
+      </tr>
+   </thead>
+   <tbody>
+      @foreach (var item in Model)
+      {
+         <tr>
+            <td class="text-start" style="width:75%">
+               @Html.DisplayFor(modelItem => item.Name)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            <td class="text-end" style="width:10%">
+               @Html.DisplayFor(modelItem => item.PhoneCount)
             </td>
-        </tr>
-}
-    </tbody>
+            <td class="text-center" style="width:15%">
+               <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+               <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+            </td>
+         </tr>
+      }
+   </tbody>
 </table>

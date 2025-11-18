@@ -15,7 +15,19 @@ namespace WebAppClientPhone.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Clients.ToListAsync());
+            //List<ClientDto> data = await _context
+            //    .Clients
+            //    .AsNoTracking()
+            //    .Select(c => new ClientDto(c.Id, c.Name, c.Phones.Count))
+            //    .ToListAsync();
+            List<ClientDto> data = await _context
+                .Clients
+                .AsNoTracking()
+                .Join(_context.Phones, x => x.Id, x => x.ClientId, (a, b) => new { a, b })
+                .GroupBy(x => new { x.a.Id, x.a.Name })
+                .Select((a) => new ClientDto(a.Key.Id, a.Key.Name, a.Count()))
+                .ToListAsync();
+            return View(data);
         }
 
         public async Task<IActionResult> Details(int? id)

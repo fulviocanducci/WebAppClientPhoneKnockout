@@ -6,4 +6,6 @@ namespace WebAppClientPhone.Models
         public string Type { get; set; } = null!;
         public string Q { get; set; } = null!;
     }
+
+    public record ClientDto(int Id, string Name, int PhoneCount);
 }
