@@ -1,0 +1,39 @@
+﻿<h4>Cliente - Pesquisa</h4>
+<hr />
+<div class="row" style="display:none;" data-bind="visible:true">
+   <div class="col-md-12 mb-2">
+      <select data-bind="select2: { value: selectedClientId, label: 'Digite o cliente', url: '/clients/search/by/name', width: '100%', minimumInputLength: 1 }"
+              class="form-select form-select-sm" name="SelectedClientId" id="SelectedClientId">
+      </select>
+   </div>
+   <div class="col-md-12 mb-2">
+      <div class="table-responsive" data-bind="visible: !phonesIsEmpty()">
+         <table class="table table-bordered table-sm">
+            <thead>
+               <tr>
+                  <th class="text-center">Número</th>
+               </tr>
+            </thead>
+            <tbody data-bind="foreach: phones">
+               <tr>
+                  <td data-bind="text: number"></td>
+               </tr>
+            </tbody>
+         </table>         
+      </div>
+      <div class="text-center mt-1 mb-1" data-bind="visible: !selectedClientIdIsEmpty()">
+         <div data-bind="text: phonesCountLabel()"></div>
+         <button data-bind="click:onSetSelectedClientIdToNull" class="btn btn-sm btn-primary">
+            Cancelar
+         </button>
+      </div>
+   </div>   
+</div>
+@section Scripts {
+   @{
+      await Html.RenderPartialAsync("_ValidationScriptsPartial");
+   }
+   <script src="~/knockout/knockout-latest.min.js"></script>
+   <script src="~/js/select2-ko.js"></script>
+   <script src="~/js/client-search.js"></script>
+}

@@ -8,6 +8,8 @@
    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
    <link href="~/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet" />
    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+   <link href="~/select2/css/select2.min.css" rel="stylesheet" />
+   <link href="~/select2-bootstrap-5-theme/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
    <link rel="stylesheet" href="~/WebAppClientPhone.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -26,6 +28,12 @@
                   </li>
                   <li class="nav-item">
                      <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link text-dark" asp-area="" asp-controller="Clients" asp-action="Index">Clients</a>
+                  </li>
+                  <li class="nav-item">
+                     <a class="nav-link text-dark" asp-area="" asp-controller="Clients" asp-action="Search">Clients</a>
                   </li>
                </ul>
             </div>
@@ -46,6 +54,8 @@
    <script src="~/lib/jquery/dist/jquery.min.js"></script>
    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
    <script src="~/jquery.maskedinput/jquery.maskedinput.js"></script>
+   <script src="~/select2/js/select2.full.min.js"></script>
+   <script src="~/select2/js/i18n/pt-br.min.js"></script>
    <script src="~/js/site.js" asp-append-version="true"></script>
    @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -153,5 +153,22 @@ namespace WebAppClientPhone.Controllers
         {
             return _context.Clients.Any(e => e.Id == id);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Search()
+        {            
+            return View();
+        }
+
+        [HttpPost("[controller]/search/by/name")]
+        public async Task<IActionResult> SearchPost(SelectTerm selectTerm)
+        {
+            var result = await _context.Clients.AsNoTracking()
+                .Where(c => c.Name.Contains(selectTerm.Q))
+                .Take(100)
+                .Select(c => SelectItemFabric.Create(c.Id, c.Name))
+                .ToListAsync();
+            return Json(SelectResultFabric.Create(result));
+        }
     }
 }
