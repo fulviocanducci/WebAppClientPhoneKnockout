@@ -56,3 +56,8 @@ function select2(name, label, url = null, width = '100%', dropdownParent = null,
    }
    $(name).select2(base);
 }
+
+
+function getJSONPhoneByClientId(value, fn) {
+   $.getJSON('/clients/phones/client-' + value, fn);
+}

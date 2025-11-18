@@ -2,18 +2,13 @@
    var self = this;
    self.selectedClientId = ko.observable(null);
    self.selectedClientId.subscribe(function (value) {
-      self.phones.removeAll();
+      self.phones.removeAll();      
       if (value && value > 0) {
-         $.getJSON('/clients/phones/client-' + value, function (data) {
-            if (data.length > 0) {
-               data.forEach(function (item) {
-                  self.phones.push({ number: ko.observable(item.number) });
-               });
-            }
-         });
+         getJSONPhoneByClientId(value, self.onSetPhones);
       }
    });
    self.phones = ko.observableArray([]);
+   // Computed
    self.phonesIsEmpty = ko.computed(function () {
       return self.phones().length === 0;
    });
@@ -25,8 +20,16 @@
          ? "Nenhum telefone encontrado."
          : "Quantidade de telefone(s): "  + self.phones().length + "."; 
    });
+   // Methods
    self.onSetSelectedClientIdToNull = function () {
       self.selectedClientId(null);
+   }
+   self.onSetPhones = function (data) {
+      if (data.length > 0) {
+         data.forEach(function (item) {
+            self.phones.push({ number: ko.observable(item.number) });
+         });
+      }
    }
 }
 const vm = new viewModel();
