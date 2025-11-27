@@ -1,0 +1,25 @@
+﻿/* Fundo azul, texto branco */
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #0d6efd !important; /* Azul Bootstrap */
+    border: 1px solid #0d6efd !important;
+    color: #fff !important;
+    padding-right: 8px !important;
+}
+
+/* Ícone X branco */
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: #ffffff !important;
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+    /* Hover do X (branco mais forte) */
+    .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+        color: #e2e6ea !important;
+    }
+
+/* Quando o chip é clicado / focado */
+.select2-container--default .select2-selection--multiple .select2-selection__choice.select2-selection__choice--highlighted {
+    background-color: #0b5ed7 !important; /* Azul escuro do BS */
+    border-color: #0b5ed7 !important;
+}

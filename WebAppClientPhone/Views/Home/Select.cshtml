@@ -1,0 +1,25 @@
+﻿<form method="get">
+   <div class="mt-1 mb-1">
+      <select class="w-100" id="tomSelect" name="select"></select>
+   </div>
+   <div class="mt-1 mb-1">
+      <select class="w-100" id="selectjs" name="select"></select>
+   </div>
+   <div class="mt-1 mb-1">
+      <select id="select2" name="select" multiple></select>
+   </div>
+   <div class="mt-1 mb-1">
+      <select id="select2a" name="select"></select>
+   </div>
+   <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+@section Scripts {
+   <script>
+      $(function(){
+         tomSelect2('#tomSelect','/clients/search/by/name');
+         selectize('#selectjs','/clients/search/by/name');
+         select2('#select2','Selecione os nomes','/clients/search/by/name');
+         select2('#select2a','Selecione os nomes','/clients/search/by/name');
+      })
+   </script>
+}

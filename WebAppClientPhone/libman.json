@@ -33,6 +33,17 @@
     {
       "library": "select2-bootstrap-5-theme@1.3.0",
       "destination": "wwwroot/select2-bootstrap-5-theme/"
+    },
+    {
+      "library": "tom-select@2.4.3",
+      "destination": "wwwroot/lib/tom-select/"
+    },
+    {
+      "library": "selectize.js@0.15.2",
+      "destination": "wwwroot/lib/selectize.js/",
+      "files": [
+        "js/selectize.min.js"
+      ]
     }
   ]
 }
